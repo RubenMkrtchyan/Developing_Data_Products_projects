@@ -1,0 +1,34 @@
+---
+title: "Developing Data Products, Plotly project"
+author: "Ruben Mkrtchyan"
+date: "20/05/2021"
+output: ioslides_presentation
+---
+
+## About the Project
+In this short project, I have used plotly to plot a 3D scatter plot of some variables of mtcars dataset. I have used 3 variables, those are mpg, hp and wt, which are miles per gallon, horsepower and weight of the cars respectively. So, the scatter plot shows the impact of weight and horsepower of the cars on its miles per gallon ratio.  
+
+```{r echo = FALSE, message = FALSE, include = FALSE, warning=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+
+```{r echo = FALSE, message = FALSE, include = FALSE, warning=FALSE}
+#install.packages('plotly')
+library(plotly)
+```
+
+
+## The 3D Scatter plot of 'mpg', 'wt' and 'hp' variables. 
+```{r echo = FALSE, message = FALSE, warning=FALSE}
+My_Fig <- plot_ly(x = ~mtcars$hp, y = ~mtcars$wt, z = ~mtcars$mpg, trace = 'scatter3d', alpha = 0.8, size = 5 )
+My_Fig <- My_Fig %>% layout(
+  title = "Scatter plot of Horsepower and weight of the cars on MPG", 
+  scene = list(
+    xaxis = list(title = "Horsepower of the Car (HP)"),
+    yaxis = list(title = "Weight of the Car"),
+    zaxis = list(title = "Miles Per Gallon (MPG) of the Car")
+  ))
+My_Fig
+
+```
